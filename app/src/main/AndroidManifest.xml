@@ -6,7 +6,7 @@
         android:name=".TraceLightApplication"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
-        android:label="TraceLight"
+        android:label="Public Lens"
         android:supportsRtl="true"
         android:theme="@style/Theme.TraceLight">
         <activity

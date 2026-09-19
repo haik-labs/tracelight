@@ -5,7 +5,22 @@ import org.junit.Assert.assertNull
 import org.junit.Test
 
 class SearchProfileValidatorTest {
-    @Test fun acceptsCompleteProfile() = assertNull(SearchProfileValidator.validate(SearchProfile("Maya", "Chen", "1993")))
-    @Test fun rejectsInvalidYear() = assertEquals("Enter a valid birth year", SearchProfileValidator.validate(SearchProfile("Maya", "Chen", "20")))
-    @Test fun rejectsMissingName() = assertEquals("Enter your first name", SearchProfileValidator.validate(SearchProfile("", "Chen", "1993")))
+    @Test fun acceptsProfileWithStrongClue() = assertNull(
+        SearchProfileValidator.validate(SearchProfile(fullName = "Maya Chen", countryOrRegion = "UK", username = "mayac"))
+    )
+
+    @Test fun rejectsSingleName() = assertEquals(
+        "Enter the person's full name",
+        SearchProfileValidator.validate(SearchProfile(fullName = "Maya", countryOrRegion = "UK", username = "mayac"))
+    )
+
+    @Test fun requiresStrongClue() = assertEquals(
+        "Add at least one strong clue",
+        SearchProfileValidator.validate(SearchProfile(fullName = "Maya Chen", countryOrRegion = "UK"))
+    )
+
+    @Test fun normalizesCluesForPrompt() {
+        val profile = SearchProfile(fullName = "Maya Chen", countryOrRegion = "UK", username = "mayac", currentCity = "London")
+        assertEquals(listOf("Username: mayac", "Current city: London"), profile.strongClues())
+    }
 }
