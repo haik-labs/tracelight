@@ -16,7 +16,9 @@ import kotlinx.serialization.json.Json
 class FirebaseAiService(
     private val json: Json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
 ) {
-    private val ai = Firebase.ai(backend = GenerativeBackend.agentPlatform(location = "global"))
+    // Keep the Vertex AI backend configured by the existing Firebase integration.
+    // Candidate and report models extend that same client with separate schemas and limits.
+    private val ai = Firebase.ai(backend = GenerativeBackend.vertexAI(location = "global"))
 
     private val candidateModel = ai.generativeModel(
         modelName = "gemini-3.8-flash",
