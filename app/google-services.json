@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "43238872807",
+    "project_id": "trace-ligth",
+    "storage_bucket": "trace-ligth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43238872807:android:e085f69bbd6b9c2442b442",
+        "android_client_info": {
+          "package_name": "com.haiklabs.tracelight"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqRDERLavRCoAbXTL_NFBqBR4m7-uVwc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
